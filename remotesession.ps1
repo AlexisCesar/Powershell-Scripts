@@ -7,4 +7,7 @@ Exit-PSSession
 $session = New-PSSession -ComputerName SRV01
 
 #running commands in this session:
-Invoke-Command -Session $session -ArgumentsList (...) -ScriptBlock { ...$($args[0])... }
+Invoke-Command -Session $session -ArgumentsList (...) -ScriptBlock { ...$($args[0])... }  #it is possible to add -AsJob flag to run it in parallel
+
+#dispose and remove
+$session | Remove-PSSession

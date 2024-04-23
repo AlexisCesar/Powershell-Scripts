@@ -11,9 +11,12 @@ $jobScriptBlock = {
 }
 
 
-$computers | ForEach-Object { 
+$jobs = $computers | ForEach-Object { 
     Start-Job -Name "JOB $_" -ScriptBlock $jobScriptBlock -ArgumentList ($_)
 }
+
+#to wait jobs finish:
+$jobs | Wait-Job
 
 # Requires RSAT
 # To find windows feature name: Get-WindowsFeature -ComputerName nameOfComputer (name property)
